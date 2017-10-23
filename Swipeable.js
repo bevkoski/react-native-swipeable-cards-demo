@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Interactable from 'react-native-interactable';
 
@@ -7,13 +7,13 @@ import Card from './Card'
 
 export default class Swipeable extends React.Component {
   static propTypes = {
-    cards: PropTypes.array,
+    cards: PropTypes.array.isRequired,
   };
 
-  static TileMargin = 10;
+  static Margin = 10;
   static BoundaryPadding = 30;
   static BoundaryBounce = 0;
-  static TileToCardWidthRatio = 1.35;
+  static ContainerToCardWidthRatio = 1.35;
 
   state = {
     cardWidth: 0,
@@ -23,11 +23,11 @@ export default class Swipeable extends React.Component {
   };
 
   onLayout = e => {
-    const tileWidth = e.nativeEvent.layout.width;
+    const containerWidth = e.nativeEvent.layout.width;
     const { cards } = this.props;
 
     // calculate the width of a card
-    const cardWidth = tileWidth / Swipeable.TileToCardWidthRatio;
+    const cardWidth = containerWidth / Swipeable.ContainerToCardWidthRatio;
     this.setState({ cardWidth });
 
     // calculate total swipeable width
@@ -36,7 +36,7 @@ export default class Swipeable extends React.Component {
 
     // calculate incrementation amount for snap points
     const incrementAmountForOuterCards =
-      cardWidth - (tileWidth - cardWidth) / 2 + Swipeable.TileMargin;
+      cardWidth - (containerWidth - cardWidth) / 2 + Swipeable.Margin;
     const incrementAmountForInnerCards = cardWidth;
 
     // calculate snap points
@@ -74,7 +74,7 @@ export default class Swipeable extends React.Component {
     }
 
     return (
-      <View onLayout={this.onLayout} style={{marginVertical: 20}}>
+      <View onLayout={this.onLayout} style={styles.container}>
         <Interactable.View
           snapPoints={this.state.snapPoints}
           boundaries={{
@@ -84,11 +84,10 @@ export default class Swipeable extends React.Component {
           }}
           horizontalOnly={true}
           animatedNativeDriver={true}
-          style={{
-            flexDirection: 'row',
-            width: this.state.swipeableWidth,
-            margin: Swipeable.TileMargin,
-          }}
+          style={[
+            styles.interactableContainer,
+            { width: this.state.swipeableWidth }
+          ]}
         >
           {cardsToRender}
         </Interactable.View>
@@ -96,3 +95,13 @@ export default class Swipeable extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 20
+  },
+  interactableContainer: {
+    flexDirection: 'row',
+    margin: Swipeable.Margin,
+  },
+});

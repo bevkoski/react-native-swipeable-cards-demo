@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-
 import Swipeable from './Swipeable';
 
 export default class App extends React.Component {
@@ -28,7 +27,7 @@ export default class App extends React.Component {
       title: 'Python Developer',
       subtitle: 'Los Angeles',
       buttonText: 'Learn More'
-    }
+    },
   ];
 
   render() {

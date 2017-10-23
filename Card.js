@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Card extends React.Component {
@@ -16,35 +16,18 @@ export default class Card extends React.Component {
   render() {
     const { title, subtitle, buttonText, imageUrl, width } = this.props;
     return (
-      <View style={{
-        alignSelf: 'stretch',
-        width: width - 2 * Card.Margin,
-        margin: Card.Margin,
-        backgroundColor: 'white',
-      }}>
+      <View style={[styles.container, { width: width - 2 * Card.Margin }]}>
         <Image
           source={{uri: imageUrl}}
           style={{width: width - 2 * Card.Margin, height: width - 2 * Card.Margin}}
         />
-        <View style={{
-          flexDirection: 'row',
-          padding: 10,
-          borderWidth: 1,
-          borderTopWidth: 0,
-          borderColor: 'lightgray',
-          }}>
-          <View style={{flex: 1}}>
-            <Text style={{fontWeight: 'bold'}}>{title}</Text>
-            <Text style={{color: 'gray'}}>{subtitle}</Text>
+        <View style={styles.content}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.subtitle}>{subtitle}</Text>
           </View>
-          <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-            <TouchableOpacity style={{
-              borderWidth: 1,
-              borderRadius: 5,
-              borderColor: 'lightgray',
-              paddingVertical: 5,
-              paddingHorizontal: 15
-            }} onPress={() => {}}>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={() => {}}>
               <Text>{buttonText}</Text>
             </TouchableOpacity>
           </View>
@@ -53,3 +36,38 @@ export default class Card extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: Card.Margin,
+    backgroundColor: 'white',
+  },
+  content: {
+    flexDirection: 'row',
+    padding: 10,
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: 'lightgray',
+  },
+  textContainer: {
+    flex: 1,
+  },
+  title: {
+    fontWeight: 'bold',
+  },
+  subtitle: {
+    color: 'gray'
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  button: {
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'lightgray',
+  },
+});
