@@ -41,6 +41,8 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 10,
+    marginVertical: 20,
     backgroundColor: 'white',
   },
 });
