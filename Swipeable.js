@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import Interactable from 'react-native-interactable';
 
@@ -76,11 +76,16 @@ export default class Swipeable extends React.Component {
       <View onLayout={this.onLayout}>
         <Interactable.View
           snapPoints={this.state.snapPoints}
-          boundaries={{
-            left: this.state.swipeableBoundary,
-            right: Swipeable.BoundaryPadding,
-            bounce: Swipeable.BoundaryBounce,
-          }}
+          // does not work on Android
+          boundaries={
+            Platform.OS === 'ios'
+              ? {
+                left: this.state.swipeableBoundary,
+                right: Swipeable.BoundaryPadding,
+                bounce: Swipeable.BoundaryBounce,
+              }
+              : { bounce: Swipeable.BoundaryBounce }
+          }
           horizontalOnly={true}
           animatedNativeDriver={true}
           style={[
