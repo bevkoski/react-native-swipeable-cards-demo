@@ -16,10 +16,6 @@ Showcase of a Facebook-style swipeable cards component built with [React Native 
 
 `yarn` or `npm install`
 
-#### Link the native library
-
-`react-native link react-native-interactable`
-
 #### Start the app
 
 `react-native run-ios` or `react-native run-android`
