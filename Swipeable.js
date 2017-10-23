@@ -1,7 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import Interactable from 'react-native-interactable';
+
+import Card from './Card'
 
 export default class Swipeable extends React.Component {
   static propTypes = {
@@ -11,9 +13,7 @@ export default class Swipeable extends React.Component {
   static TileMargin = 10;
   static BoundaryPadding = 30;
   static BoundaryBounce = 0;
-  static TileToCardWidthRatio = 1.5;
-  static CardWidthHeightRatio = 1.25;
-  static CardMargin = 10;
+  static TileToCardWidthRatio = 1.35;
 
   state = {
     cardWidth: 0,
@@ -63,17 +63,12 @@ export default class Swipeable extends React.Component {
 
     if (this.state.cardWidth > 0) {
       cardsToRender = cards.map(card =>
-        <View key={card} style={{
-          width: this.state.cardWidth - 2 * Swipeable.CardMargin,
-          height: this.state.cardWidth / Swipeable.CardWidthHeightRatio,
-          margin: Swipeable.CardMargin,
-          backgroundColor: 'blue'
-        }} />
+        <Card key={card} width={this.state.cardWidth} />
       )
     }
 
     return (
-      <View onLayout={this.onLayout}>
+      <View onLayout={this.onLayout} style={{marginVertical: 20}}>
         <Interactable.View
           snapPoints={this.state.snapPoints}
           boundaries={{
