@@ -62,8 +62,14 @@ export default class Swipeable extends React.Component {
     let cardsToRender;
 
     if (this.state.cardWidth > 0) {
-      cardsToRender = cards.map(card =>
-        <Card key={card} width={this.state.cardWidth} />
+      cardsToRender = cards.map((card, index) =>
+        <Card
+          key={index}
+          imageUrl={card.imageUrl}
+          title={card.title}
+          subtitle={card.subtitle}
+          buttonText={card.buttonText}
+          width={this.state.cardWidth} />
       )
     }
 

@@ -4,13 +4,17 @@ import PropTypes from 'prop-types';
 
 export default class Card extends React.Component {
   static propTypes = {
+    imageUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    buttonText: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
   };
 
   static Margin = 10;
 
   render() {
-    const { width } = this.props;
+    const { title, subtitle, buttonText, imageUrl, width } = this.props;
     return (
       <View style={{
         alignSelf: 'stretch',
@@ -19,7 +23,7 @@ export default class Card extends React.Component {
         backgroundColor: 'white',
       }}>
         <Image
-          source={{uri: 'https://images.unsplash.com/photo-1501850305723-0bf18f354fea?w=500'}}
+          source={{uri: imageUrl}}
           style={{width: width - 2 * Card.Margin, height: width - 2 * Card.Margin}}
         />
         <View style={{
@@ -30,8 +34,8 @@ export default class Card extends React.Component {
           borderColor: 'lightgray',
           }}>
           <View style={{flex: 1}}>
-            <Text style={{fontWeight: 'bold'}}>React Native Developer</Text>
-            <Text style={{color: 'gray'}}>San Francisco</Text>
+            <Text style={{fontWeight: 'bold'}}>{title}</Text>
+            <Text style={{color: 'gray'}}>{subtitle}</Text>
           </View>
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
             <TouchableOpacity style={{
@@ -41,7 +45,7 @@ export default class Card extends React.Component {
               paddingVertical: 5,
               paddingHorizontal: 15
             }} onPress={() => {}}>
-              <Text>Learn More</Text>
+              <Text>{buttonText}</Text>
             </TouchableOpacity>
           </View>
         </View>
