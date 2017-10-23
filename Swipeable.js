@@ -98,7 +98,7 @@ export default class Swipeable extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20
+    marginVertical: 20,
   },
   interactableContainer: {
     flexDirection: 'row',

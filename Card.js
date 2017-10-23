@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   content: {
+    minHeight: 75,
     flexDirection: 'row',
     padding: 10,
     borderWidth: 1,
@@ -51,12 +52,13 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
+    justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
   },
   subtitle: {
-    color: 'gray'
+    color: 'gray',
   },
   buttonContainer: {
     flex: 1,

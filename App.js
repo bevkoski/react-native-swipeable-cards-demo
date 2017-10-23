@@ -6,7 +6,7 @@ export default class App extends React.Component {
   static Cards = [
     {
       imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500',
-      title: 'Objective C Developer',
+      title: 'Java Developer',
       subtitle: 'New York City',
       buttonText: 'Apply Now'
     },
@@ -41,7 +41,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
   },
 });
