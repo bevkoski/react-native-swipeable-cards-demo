@@ -19,3 +19,7 @@ Showcase of a Facebook-style swipeable cards component built with [React Native 
 #### Start the app
 
 `react-native run-ios` or `react-native run-android`
+
+## How it works
+
+Check out [this Medium article](https://blog.netcetera.com/facebook-style-swipeable-cards-with-react-native-interactable-c9a034a16ac5).
