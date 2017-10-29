@@ -39,13 +39,13 @@ export default class Swipeable extends React.Component {
     const incrementAmountForInnerCards = cardWidth;
 
     // calculate snap points
-    let currentSnapPointX = 0;
+    let x = 0;
     let snapPoints = cards.map((card, index) => {
-      const snapPointForCard = { x: currentSnapPointX };
+      const snapPointForCard = { x };
       if (index === 0 || index === cards.length - 2) {
-        currentSnapPointX -= incrementAmountForOuterCards
+        x -= incrementAmountForOuterCards
       } else {
-        currentSnapPointX -= incrementAmountForInnerCards
+        x -= incrementAmountForInnerCards
       }
       return snapPointForCard
     });
