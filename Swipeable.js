@@ -10,6 +10,8 @@ export default class Swipeable extends React.Component {
     cards: PropTypes.array.isRequired,
   };
 
+  static HorizontalMargin = 10;
+  static VerticalMargin = 20;
   static BoundaryPadding = 30;
   static BoundaryBounce = 0;
   static ContainerToCardWidthRatio = 1.35;
@@ -35,7 +37,7 @@ export default class Swipeable extends React.Component {
 
     // calculate incrementation amount for snap points
     const incrementAmountForOuterCards =
-      cardWidth - (containerWidth - cardWidth) / 2;
+      cardWidth - (containerWidth - cardWidth) / 2 + Swipeable.HorizontalMargin;
     const incrementAmountForInnerCards = cardWidth;
 
     // calculate snap points
@@ -103,5 +105,7 @@ export default class Swipeable extends React.Component {
 const styles = StyleSheet.create({
   interactableContainer: {
     flexDirection: 'row',
+    marginHorizontal: Swipeable.HorizontalMargin,
+    marginVertical: Swipeable.VerticalMargin,
   },
 });
